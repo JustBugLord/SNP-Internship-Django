@@ -1,1 +1,5 @@
 .venv
+static
+!polls/static
+db.json
+polls/migrations/

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+    <h2 class="leftstr">Create new poll</h2>
+    <h2 class="rightstr"><a href="{% url 'polls:index' %}">Go Home</a></h2>
+</div>
+<form action="{% url 'polls:create' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" name="title" placeholder="Enter your poll" class="text-field__input"  required />
+    </div>
+    <ul id="optionsContainer">
+        <li class="option-item">
+            <div>
+                <input type="text" name="choice" placeholder="Enter choice title" class="choice-text-field__input" required/>
+                <button type="button" onclick="removeOption(this)" class="btn btn-danger">Remove</button>
+            </div>
+        </li>
+    </ul>
+    <br>
+    <button type="button" onclick="addOption()" class="btn btn-success">+ Add choice</button>
+    <button type="submit" value="Create" class="btn btn-primary">Create</button>
+</form>
+<script src="{% static 'polls/script.js' %}"></script>
+{% endblock %}
